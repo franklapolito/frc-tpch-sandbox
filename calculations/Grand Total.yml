@@ -1,0 +1,4 @@
+unique_name: Grand Total
+object_type: metric_calc
+label: Grand Total
+expression: ALLMEMBER([Measures].[Total Charge])

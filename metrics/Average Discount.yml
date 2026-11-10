@@ -1,0 +1,6 @@
+unique_name: Average Discount
+object_type: metric
+label: Average Discount
+calculation_method: average
+column: L_DISCOUNT
+dataset: LINEITEM

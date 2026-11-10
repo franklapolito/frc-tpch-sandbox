@@ -1,0 +1,6 @@
+unique_name: Average Price
+object_type: metric
+label: Average Price
+calculation_method: average
+column: L_EXTENDEDPRICE
+dataset: LINEITEM

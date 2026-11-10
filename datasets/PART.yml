@@ -1,0 +1,24 @@
+unique_name: PART
+object_type: dataset
+label: PART
+columns:
+  - name: P_PARTKEY
+    data_type: decimal(38,0)
+  - name: P_NAME
+    data_type: string
+  - name: P_MFGR
+    data_type: string
+  - name: P_BRAND
+    data_type: string
+  - name: P_TYPE
+    data_type: string
+  - name: P_SIZE
+    data_type: decimal(38,0)
+  - name: P_CONTAINER
+    data_type: string
+  - name: P_RETAILPRICE
+    data_type: decimal(12,2)
+  - name: P_COMMENT
+    data_type: string
+connection_id: con_SNOWFLAKE_SAMPLE_DATA_TPCH_SF1
+table: PART

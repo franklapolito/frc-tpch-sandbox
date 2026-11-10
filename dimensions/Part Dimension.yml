@@ -1,0 +1,51 @@
+unique_name: Part Dimension
+object_type: dimension
+label: Part Dimension
+hierarchies:
+  - unique_name: Part Dimension Hierarchy
+    label: Part Dimension Hierarchy
+    levels:
+      - unique_name: Part Manufacturer
+      - unique_name: Part Brand
+      - unique_name: Part Name
+        secondary_attributes:
+          - unique_name: Part Comment
+            label: Part Comment
+            contains_unique_names: false
+            dataset: PART
+            is_unique_key: false
+            key_columns:
+              - P_COMMENT
+            name_column: P_COMMENT
+          - unique_name: Part Size
+            label: Part Size
+            contains_unique_names: false
+            dataset: PART
+            is_unique_key: false
+            key_columns:
+              - P_SIZE
+            name_column: P_SIZE
+level_attributes:
+  - unique_name: Part Name
+    label: Part Name
+    contains_unique_names: false
+    dataset: PART
+    is_unique_key: false
+    key_columns:
+      - P_PARTKEY
+    name_column: P_NAME
+  - unique_name: Part Brand
+    label: Part Brand
+    contains_unique_names: false
+    dataset: PART
+    key_columns:
+      - P_BRAND
+    name_column: P_BRAND
+  - unique_name: Part Manufacturer
+    label: Part Manufacturer
+    contains_unique_names: false
+    dataset: PART
+    key_columns:
+      - P_MFGR
+    name_column: P_MFGR
+type: standard

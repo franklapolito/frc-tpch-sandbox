@@ -1,0 +1,6 @@
+unique_name: Total Charge
+object_type: metric
+label: Total Charge
+calculation_method: sum
+column: Final Price (After Tax & Discount)
+dataset: LINEITEM

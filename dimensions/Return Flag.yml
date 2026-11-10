@@ -1,0 +1,18 @@
+unique_name: Return Flag
+object_type: dimension
+label: Return Flag
+hierarchies:
+  - unique_name: Return Flag
+    label: Return Flag
+    levels:
+      - unique_name: Return Flag
+is_degenerate: true
+level_attributes:
+  - unique_name: Return Flag
+    label: Return Flag
+    contains_unique_names: false
+    dataset: LINEITEM
+    key_columns:
+      - L_RETURNFLAG
+    name_column: L_RETURNFLAG
+type: standard

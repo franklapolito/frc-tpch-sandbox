@@ -1,0 +1,4 @@
+unique_name: Per Unit Price
+object_type: metric_calc
+label: Per Unit Price
+expression: '[Measures].[Base Price] / [Measures].[Order Quantity]'

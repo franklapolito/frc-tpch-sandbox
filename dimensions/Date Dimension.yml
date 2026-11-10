@@ -1,0 +1,46 @@
+unique_name: Date Dimension
+object_type: dimension
+label: Date Dimension
+hierarchies:
+  - unique_name: YQMD Hierarchy
+    label: YQMD Hierarchy
+    levels:
+      - unique_name: Year
+      - unique_name: Quarter
+      - unique_name: Month
+      - unique_name: Date
+level_attributes:
+  - unique_name: Date
+    label: Date
+    contains_unique_names: false
+    dataset: date_dim
+    is_unique_key: false
+    key_columns:
+      - PK_DATE
+    name_column: PK_DATE
+    time_unit: day
+  - unique_name: Year
+    label: Year
+    contains_unique_names: false
+    dataset: date_dim
+    key_columns:
+      - YEAR
+    name_column: YEAR
+    time_unit: year
+  - unique_name: Quarter
+    label: Quarter
+    contains_unique_names: false
+    dataset: date_dim
+    key_columns:
+      - QUARTER
+    name_column: QUARTER_NAME
+    time_unit: quarter
+  - unique_name: Month
+    label: Month
+    contains_unique_names: false
+    dataset: date_dim
+    key_columns:
+      - MONTH
+    name_column: MONTH_NAME
+    time_unit: month
+type: time

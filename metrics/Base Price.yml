@@ -1,0 +1,6 @@
+unique_name: Base Price
+object_type: metric
+label: Base Price
+calculation_method: sum
+column: L_EXTENDEDPRICE
+dataset: LINEITEM

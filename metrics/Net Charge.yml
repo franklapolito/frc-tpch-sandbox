@@ -1,0 +1,6 @@
+unique_name: Net Charge
+object_type: metric
+label: Net Charge
+calculation_method: sum
+column: Net Price (After Discount)
+dataset: LINEITEM

@@ -1,0 +1,6 @@
+unique_name: Order Count
+object_type: metric
+label: Order Count
+calculation_method: count distinct
+column: L_ORDERKEY
+dataset: LINEITEM

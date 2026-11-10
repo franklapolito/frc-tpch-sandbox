@@ -1,0 +1,78 @@
+unique_name: date_dim
+object_type: dataset
+label: date_dim
+columns:
+  - name: PK_DATE
+    data_type: date
+  - name: PK_TIMESTAMP
+    data_type: datetime
+  - name: DATEKEY
+    data_type: decimal(38,0)
+  - name: DATE_NAME
+    data_type: string
+  - name: YEAR
+    data_type: decimal(4,0)
+  - name: YEAR_NAME
+    data_type: string
+  - name: HALF_YEAR
+    data_type: datetime
+  - name: HALF_YEAR_NAME
+    data_type: string
+  - name: QUARTER
+    data_type: datetime
+  - name: QUARTER_NAME
+    data_type: string
+  - name: MONTH
+    data_type: datetime
+  - name: MONTH_NAME
+    data_type: string
+  - name: WEEK
+    data_type: datetime
+  - name: WEEK_NAME
+    data_type: string
+  - name: DAY_OF_YEAR
+    data_type: decimal(4,0)
+  - name: DAY_OF_YEAR_NAME
+    data_type: string
+  - name: DAY_OF_WEEK
+    data_type: decimal(2,0)
+  - name: DAY_OF_WEEK_NAME
+    data_type: string
+  - name: WEEK_OF_YEAR
+    data_type: decimal(2,0)
+  - name: WEEK_OF_YEAR_NAME
+    data_type: string
+  - name: MONTH_OF_YEAR
+    data_type: decimal(2,0)
+  - name: MONTH_OF_YEAR_NAME
+    data_type: string
+  - name: QUARTER_OF_YEAR
+    data_type: decimal(2,0)
+  - name: QUARTER_OF_YEAR_NAME
+    data_type: string
+connection_id: con_SNOWFLAKE_SAMPLE_DATA_TPCH_SF1
+sql: >-
+  WITH date_series AS (SELECT DATEADD(DAY, 0, '1990-01-01') AS date_day UNION
+  ALL SELECT DATEADD(DAY, 1, date_day) FROM date_series WHERE date_day <
+  '1999-12-31') SELECT CAST(date_day AS DATE) AS pk_date, CAST(date_day AS
+  TIMESTAMP) AS pk_timestamp, CAST(TO_CHAR(date_day, 'YYYYMMDD') AS DECIMAL) AS
+  datekey, CONCAT(DAYNAME(date_day), ', ', TO_CHAR(date_day, 'MMMM DD, YYYY'))
+  AS date_name, EXTRACT(YEAR FROM date_day) AS year, CONCAT('Calendar ',
+  TO_CHAR(date_day, 'YYYY')) AS year_name, CASE WHEN EXTRACT(QUARTER FROM
+  date_day) < 3 THEN DATE_TRUNC('YEAR', date_day) ELSE DATEADD(QUARTER, 2,
+  DATE_TRUNC('YEAR', date_day)) END AS half_year, CASE WHEN EXTRACT(QUARTER FROM
+  date_day) < 3 THEN CONCAT('Semester 1, ', TO_CHAR(date_day, 'YYYY')) ELSE
+  CONCAT('Semester 2, ', TO_CHAR(date_day, 'YYYY')) END AS half_year_name,
+  DATE_TRUNC('QUARTER', date_day) AS quarter, CONCAT('Quarter ', EXTRACT(QUARTER
+  FROM date_day), ', ', EXTRACT(YEAR FROM date_day)) AS quarter_name,
+  DATE_TRUNC('MONTH', date_day) AS month, TO_CHAR(date_day, 'MMMM YYYY') AS
+  month_name, DATE_TRUNC('WEEK', date_day) AS week, CONCAT('Week ', EXTRACT(WEEK
+  FROM date_day), ', ', EXTRACT(YEAR FROM date_day)) AS week_name,
+  EXTRACT(DAYOFYEAR FROM date_day) AS day_of_year, CONCAT('Day ',
+  EXTRACT(DAYOFYEAR FROM date_day)) AS day_of_year_name, EXTRACT(DAYOFWEEK FROM
+  date_day) AS day_of_week, DAYNAME(date_day) AS day_of_week_name, EXTRACT(WEEK
+  FROM date_day) AS week_of_year, CONCAT('Week ', EXTRACT(WEEK FROM date_day))
+  AS week_of_year_name, EXTRACT(MONTH FROM date_day) AS month_of_year,
+  TO_CHAR(date_day, 'MMMM') AS month_of_year_name, EXTRACT(QUARTER FROM
+  date_day) AS quarter_of_year, CONCAT('Quarter ', EXTRACT(QUARTER FROM
+  date_day)) AS quarter_of_year_name FROM date_series

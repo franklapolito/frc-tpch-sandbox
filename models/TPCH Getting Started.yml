@@ -1,12 +1,53 @@
 unique_name: TPCH Getting Started
 object_type: model
 label: TPCH Getting Started
-metrics: []
+dimensions:
+  - Ship Mode
+  - Return Flag
+metrics:
+  - unique_name: Order Quantity
+  - unique_name: Base Price
+  - unique_name: Average Discount
+  - unique_name: Order Count
+  - unique_name: Net Charge
+  - unique_name: Total Charge
+  - unique_name: Average Quantity
+  - unique_name: Average Price
+  - unique_name: Per Unit Price
+  - unique_name: Grand Total
 relationships:
-  - unique_name: LINEITEM_empty_dimension
+  - unique_name: LINEITEM_L_SHIPDATE_to_Date Dimension_Date
     from:
       dataset: LINEITEM
-      join_columns: []
+      join_columns:
+        - L_SHIPDATE
+    role_play: Ship {0}
     to:
-      dimension: ''
-      level: ''
+      dimension: Date Dimension
+      level: Date
+  - unique_name: LINEITEM_L_COMMITDATE_to_Date Dimension_Date
+    from:
+      dataset: LINEITEM
+      join_columns:
+        - L_COMMITDATE
+    role_play: Commit {0}
+    to:
+      dimension: Date Dimension
+      level: Date
+  - unique_name: LINEITEM_L_RECEIPTDATE_to_Date Dimension_Date
+    from:
+      dataset: LINEITEM
+      join_columns:
+        - L_RECEIPTDATE
+    role_play: Receipt {0}
+    to:
+      dimension: Date Dimension
+      level: Date
+  - unique_name: LINEITEM_L_PARTKEY_to_Part Dimension_Part Name
+    from:
+      dataset: LINEITEM
+      join_columns:
+        - L_PARTKEY
+    to:
+      dimension: Part Dimension
+      level: Part Name
