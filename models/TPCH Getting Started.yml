@@ -1,0 +1,12 @@
+unique_name: TPCH Getting Started
+object_type: model
+label: TPCH Getting Started
+metrics: []
+relationships:
+  - unique_name: LINEITEM_empty_dimension
+    from:
+      dataset: LINEITEM
+      join_columns: []
+    to:
+      dimension: ''
+      level: ''
